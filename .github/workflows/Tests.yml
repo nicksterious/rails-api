@@ -1,0 +1,20 @@
+name: Test app
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - 'master'
+
+jobs:
+  Tests:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Run tests container
+      run: |
+        docker-compose run test
